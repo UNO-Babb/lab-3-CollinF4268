@@ -1,25 +1,50 @@
 #RPS.py
-#Name:
-#Date:
-#Assignment:
+#Name: Collin Frederick
+#Date: 2/9/25
+#Assignment:RPS
+import random
+
 import random
 
 def main():
-  wins = 0
-  ties = 0
-  losses = 0
-  #Create a loop that continues as long as the user wants to play.
-  #User can play as many games as they wish.
+    wins = 0
+    ties = 0
+    losses = 0
 
-  #Randomly choose the computer between 'R', 'P', or 'S'
-  #Prompt the user for their RPS selection
-  #Determine winner and state what happened to the user
-  #Ask the user if they would like to play again.
+    while True:
+        computer_choice = random.choice(['R', 'P', 'S'])
 
-  #In the end, print the stats
-  print("Wins \t Ties \t Losses")
-  print("---- \t ---- \t ------")
-  print(wins, "\t", ties , "\t", losses)
+        
+        user_choice = input("Enter R (Rock), P (Paper), or S (Scissors): ").upper()
 
+        
+        if user_choice not in ['R', 'P', 'S']:
+            print("Invalid choice. Please enter R, P, or S.")
+            continue
+
+        # Determine the winner
+        if user_choice == computer_choice:
+            print(f"Both chose {user_choice}. It's a tie!")
+            ties += 1
+        elif (user_choice == 'R' and computer_choice == 'S') or \
+             (user_choice == 'P' and computer_choice == 'R') or \
+             (user_choice == 'S' and computer_choice == 'P'):
+            print(f"You chose {user_choice}, computer chose {computer_choice}. You win!")
+            wins += 1
+        else:
+            print(f"You chose {user_choice}, computer chose {computer_choice}. You lose!")
+            losses += 1
+
+        # Ask user if they want to play again
+        play_again = input("Do you want to play again? (Y/N): ").upper()
+        if play_again != 'Y':
+            break  # Exit the loop if the user doesn't want to continue
+
+    # Print final stats
+    print("\nGame Over! Here are your results:")
+    print("Wins \t Ties \t Losses")
+    print(wins, "\t", ties, "\t", losses)
+
+# Run the game
 if __name__ == '__main__':
-  main()
+    main()
