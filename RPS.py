@@ -22,7 +22,6 @@ def main():
             print("Invalid choice. Please enter R, P, or S.")
             continue
 
-        # Determine the winner
         if user_choice == computer_choice:
             print(f"Both chose {user_choice}. It's a tie!")
             ties += 1
@@ -35,16 +34,13 @@ def main():
             print(f"You chose {user_choice}, computer chose {computer_choice}. You lose!")
             losses += 1
 
-        # Ask user if they want to play again
         play_again = input("Do you want to play again? (Y/N): ").upper()
         if play_again != 'Y':
-            break  # Exit the loop if the user doesn't want to continue
+            break 
 
-    # Print final stats
     print("\nGame Over! Here are your results:")
     print("Wins \t Ties \t Losses")
     print(wins, "\t", ties, "\t", losses)
 
-# Run the game
 if __name__ == '__main__':
     main()
